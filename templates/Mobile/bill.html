@@ -1,0 +1,347 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+
+<html>
+<head>
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <style>
+body {
+    background: #555;
+}
+
+.content {
+    max-width: 300px;
+    margin: auto;
+    background: white;
+    padding: 10px;
+}
+
+
+
+
+
+    </style>
+</head>
+<body>
+
+<br><br>
+{% block content%}
+
+
+
+
+
+<div class="content">
+
+
+    <!--  "{% url 'Mobile:bill_generate' %} " -->
+    <form action="#" method="POST" align='center'>
+
+        <p>TO</p>
+NAME <input type="text" name="customer_name" placeholder="Enter Receiver Nmae"/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+BILL NO<input type="text" name="bill_no" class="billno" placeholder="billno"><br>
+
+ADDRESS <textarea name="customer_address" placeholder="enter address"></textarea>
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MO.No <input type="text" name="mobileno" placeholder="Mobile number" style="text-align:right;"/>
+
+
+
+
+
+        {% csrf_token %}
+        <!-- Name: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" name="name"/><br/><br>
+        Address: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="address"/><br/><br>
+        Mobile:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="mobile"/><br/><br>
+        Model: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="model"/><br/><br>
+        price: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="price"/><br/><br>
+        discount: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="discount"/><br/><br>
+        Gst: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="gst"/><br/><br>
+
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit"    value="Generate"/>
+        </form> -->
+
+
+        <br><br>
+
+        <br><br>
+        <br><br>
+        <br><br>
+<!--
+        <table id="datatable" class="table table-condensed authors-list" ">
+        <thead>
+        <tr>
+            <th class="text-center"></th>
+            <th class="text-center">SI.No</th>
+            <th class="text-center">Item Name</th>
+            <th class="text-center">Quantity</th>
+            <th class="text-center">Price</th>
+            <th class="text-center">Discount</th>
+            <th class="text-center">Total</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr id="apunka">
+            <td>
+            <input type="checkbox" name="selectitem">
+            </td>
+            <td class="nr">
+
+            </td>
+            <td><input type="text" name="itemname">
+            </td>
+
+            <td>
+                <input type="text" name="quantity"  id="item_quantity" value="0" style="text-align:right;">
+            </td>
+            <td>
+                <input type="text" name="price" id ="item_price"  value="0"  style="text-align:right;">
+            </td>
+
+            <td>
+                <input type="text" name="discount" id="item_discount"  value="0"  style="text-align:right;">
+            </td>
+            <td>
+                <input type="text" name="total"  id="item_total_0" value="0" style="text-align:right;">
+            </td>
+
+        </tr>
+
+
+        </tbody>
+        </table>
+
+-->
+
+
+          <p>Enter Passenger Details. Press Add Passengers button to add more passengers.</p>
+
+    <table id="pTable">
+        <tbody>
+        <tr>
+            <td>S.No</td>
+            <td>ITEM-NAME</td>
+            <td>QUANTITY</td>
+            <td>PRICE</td>
+            <td> DISCOUNT</td>
+            <td>TOTAL</td>
+            <td>Action</td>
+        </tr>
+
+    </tbody></table>
+    <br/>
+        <input id="addButId" type="button" value="Add Passengers">
+
+    <br><input type="submit" value="Submit">
+
+
+
+
+        <a href="#" title="" class="add-author"> <span class="glyphicon glyphicon-plus-sign"></span>Add Row</a>
+
+
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="#" class=" button-delete"><span class="glyphicon glyphicon-remove"></span>Remove ROW</a>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+        <input type="submit" name="create-bill" value="CREATE-BILL">
+
+
+
+
+
+
+{% endblock %}
+
+
+</form>
+</div>
+
+{% block jquery %}
+
+// this function call after going out from the discount text box.. so  on blur it will work
+
+$(document.body).on('blur', '#item_discount' ,function(){
+var quantity1 = 0;
+var price1  = 0;
+var discount1 =0;
+serial_no =0 ;
+
+// it will find all row data which has tag = input  and type = text
+    var test1 = $(this).closest("tr").find("input:text").map(function () {
+        return $(this).val();
+    });
+     alert(test1.get())
+
+
+
+// find all row data first then from row data find thd data which has class as nr..   ultimately getting the serial no column data
+    var $row = $(this).closest("tr");
+    var text = $row.find(".nr").text(); // Find the text
+
+    // alert($row.attr("id"));
+
+   var ss = $row.find("input:text").map(function(){
+     return $(this).attr("id");
+});
+alert('satish'+ss.get());
+  var total_id1 = ss.get(4);
+
+
+    // alert(text);   currently i have removed to read a  serial number   .. this was written to get a serial number
+
+// iterating tha array of fetch all row data
+
+$.each(test1.get(), function( index, value ) {
+   if(index == 1) {
+quantity1 = value }
+else if(index == 2) {
+price1 = value }
+        else if(index == 3){
+        discount1= value;
+        }
+});
+var total1 = quantity1 * price1 - discount1 ;
+$('#' + total_id1).val(total1);
+
+
+});
+
+
+
+// adding the row at the end of table
+
+    jQuery(function(){
+    var counter = 1;
+    var inc_id = 0 ;
+    jQuery('a.add-author').click(function(event){
+        event.preventDefault();
+                  inc_id=inc_id + 1;
+        var newRow = jQuery('<tr><td><input type="checkbox" name="first_name' +
+            counter + '"/></td><td class="nr"> </td><td><input type="text" name="itemname' +
+
+            counter + '"/></td><td><input type="text"   id="item_quantity1"  value="0" style="text-align:right;" name="quantity' +
+
+            counter + '"/></td><td><input type="text"     id="item_price1"   value="0"  style="text-align:right;" name="price' +
+
+            counter + '"/></td><td><input type="text"    id="item_discount1"   value="0" style="text-align:right;" name="discount' +
+
+            counter + '"/></td><td><input type="text"    id="item_total1_'+ inc_id +'"  value="0"  style="text-align:right;" name="total' +
+
+            counter + '"/></td></tr>' );
+
+            counter++;
+        jQuery('table.authors-list').append(newRow);
+addSerialNumber();
+
+    });
+});
+
+
+// deleting the selected row
+
+ jQuery(function(){
+$('a.button-delete').click(function(){
+  $("table input[type='checkbox']:checked").parent().parent().remove();
+
+});
+});
+
+
+// adding the default serial number in a second column of table
+var addSerialNumber = function () {
+
+    $('table tr').each(function(index) {
+        $(this).find('td:nth-child(2)').html(index);
+    });
+};
+
+//addSerialNumber();
+
+
+
+
+
+
+
+
+
+
+        function arrangeSno()
+
+    {
+           var i=0;
+            $('#pTable tr').each(function() {
+                $(this).find(".sNo").html(i);
+                i++;
+             });
+
+    }
+
+$(document).ready(function(){
+        var inc_val =0 ;
+
+$('#addButId').click(function(){
+
+
+
+        alert(inc_val);
+        var sno=$('#pTable tr').length;
+                       trow= jQuery( '<tr><td class="sNo">'+sno+'</td>'+
+         '<td><input name="name" id="item_name" type="text"></td>'+
+        '<td><input name="quantity"  id="item_quantity" type="text"></td>'+
+                           '<td><input name="price" id="item_price" type="text"></td>'+
+                           '<td><input  type="text" id="item_discount" name="discount"></td>'+
+                          '<td><input name="total" id="item_total_'+inc_val++ +'" type="text"></td>'+
+                          '<td><button type="button" class="rButton">Remove</button></td></tr>');
+                      $('#pTable').append(trow);
+                    });
+
+                     });
+
+
+//<select name='gender'><option value='M'>Male</option><option value='F'>Female</option></select>
+
+
+
+
+
+
+$(document).on('click', 'button.rButton', function () {
+       $(this).closest('tr').remove();
+       arrangeSno();
+     return false;
+ });
+
+
+
+{%endblock %}
+
+
+
+
+
+
+
+{% block footer %}
+<p> thans to the footer </p>
+
+{% endblock %}
+</body>
+</html>

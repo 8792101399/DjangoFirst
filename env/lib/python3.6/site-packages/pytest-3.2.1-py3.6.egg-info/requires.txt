@@ -1,0 +1,9 @@
+py>=1.4.33
+setuptools
+
+[:python_version=="2.6"]
+argparse
+ordereddict
+
+[:sys_platform=="win32"]
+colorama
